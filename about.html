@@ -27,7 +27,22 @@
 
     <header class="site-header">
       <div class="wrap nav">
-        <a class="brand" href="index.html">Fikayo Otun<span>Architecture · AI · Systems</span></a>
+        <a class="brand" href="index.html">
+          <picture>
+            <source srcset="assets/portraits/overcoat-avatar.webp" type="image/webp" />
+            <img
+              class="brand-avatar"
+              src="assets/portraits/overcoat-avatar.jpg"
+              alt=""
+              width="40"
+              height="40"
+              decoding="async"
+            />
+          </picture>
+          <span class="brand-text"
+            >Fikayo Otun<span class="brand-tagline">Architecture · AI · Systems</span></span
+          >
+        </a>
         <button
           class="nav-toggle"
           type="button"
@@ -67,13 +82,32 @@
 
     <main id="main">
       <header class="page-hero wrap reveal">
-        <p class="eyebrow">About</p>
-        <h1>A little about me</h1>
-        <p class="lede">
-          UK-based technology leader. I work at the intersection of
-          architecture, AI, and commercial systems, and I write with the same
-          care I bring to design decisions.
-        </p>
+        <div class="about-intro">
+          <div class="about-copy">
+            <p class="eyebrow">About</p>
+            <h1>A little about me</h1>
+            <p class="lede">
+              UK-based technology leader. I work at the intersection of
+              architecture, AI, and commercial systems, and I write with the same
+              care I bring to design decisions.
+            </p>
+          </div>
+          <figure class="portrait">
+            <picture>
+              <source
+                srcset="assets/portraits/suit-three-piece.webp"
+                type="image/webp"
+              />
+              <img
+                src="assets/portraits/suit-three-piece.jpg"
+                alt="Fikayo Otun in a formal three-piece charcoal suit and black tie, against a light grey studio background."
+                width="900"
+                height="1125"
+                decoding="async"
+              />
+            </picture>
+          </figure>
+        </div>
       </header>
 
       <section class="section" style="border-top: none; padding-top: 0">
