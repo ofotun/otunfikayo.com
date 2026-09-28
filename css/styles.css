@@ -115,6 +115,9 @@ button:focus-visible {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
   font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 400;
@@ -128,7 +131,21 @@ button:focus-visible {
   color: var(--ink);
 }
 
-.brand span {
+.brand-avatar {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: block;
+  line-height: 1;
+}
+
+.brand-tagline {
   display: block;
   font-family: var(--font-body);
   font-size: 0.65rem;
@@ -551,6 +568,34 @@ h3 {
   border-top: 1px solid var(--accent);
 }
 
+/* --- About intro + portrait --- */
+
+.about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(11rem, 0.8fr);
+  gap: clamp(1.75rem, 4vw, 3.25rem);
+  align-items: end;
+}
+
+.about-intro .lede {
+  margin-top: 0.75rem;
+}
+
+.portrait {
+  margin: 0;
+  max-width: 22rem;
+  justify-self: end;
+  width: 100%;
+}
+
+.portrait img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 12%;
+}
+
 /* --- About prose --- */
 
 .prose {
@@ -780,6 +825,17 @@ h3 {
   .hero {
     min-height: auto;
     padding-top: 3rem;
+  }
+
+  .about-intro {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 1.75rem;
+  }
+
+  .portrait {
+    justify-self: start;
+    max-width: 16rem;
   }
 }
 
