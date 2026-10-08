@@ -294,10 +294,13 @@ h3 {
   font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
+  line-height: 1.25;
   text-decoration: none;
   border-radius: 0.3rem;
   border: 1px solid transparent;
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
   transition: background 0.2s var(--ease), color 0.2s var(--ease),
     border-color 0.2s var(--ease), transform 0.2s var(--ease);
 }
@@ -673,6 +676,357 @@ h3 {
   color: var(--muted);
 }
 
+/* --- Career coaching --- */
+
+.method-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.method-list > li {
+  display: grid;
+  grid-template-columns: minmax(4rem, 5.5rem) 1fr;
+  gap: 1rem 1.75rem;
+  padding: 1.65rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.method-list > li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.method-num {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-top: 0.4rem;
+}
+
+.method-list h3 {
+  margin-bottom: 0.45rem;
+}
+
+.method-list p {
+  margin: 0;
+  color: var(--ink-soft);
+  max-width: 38rem;
+}
+
+.method-deliverable {
+  margin-top: 0.75rem !important;
+  font-size: 0.92rem;
+  color: var(--ink) !important;
+}
+
+.method-deliverable span {
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.package-card {
+  max-width: 36rem;
+  padding: 1.75rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.package-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.package-price {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.package-price-note {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+.package-scarcity {
+  margin: 0.85rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.package-summary {
+  margin: 1.25rem 0 0;
+  color: var(--ink-soft);
+  max-width: 34rem;
+}
+
+.package-includes {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  max-width: 34rem;
+}
+
+.package-includes li {
+  position: relative;
+  padding: 0.7rem 0 0.7rem 1.25rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.package-includes li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.package-includes li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.2rem;
+  width: 0.45rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.fit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+.fit-col h3 {
+  margin-bottom: 1rem;
+}
+
+.fit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fit-list li {
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.fit-list li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.testimonial-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.testimonial {
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.testimonial:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.testimonial-badge {
+  display: inline-block;
+  margin: 0 0 0.85rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0.2rem;
+}
+
+.testimonial blockquote {
+  margin: 0;
+  padding: 0;
+  max-width: 38rem;
+}
+
+.testimonial blockquote p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.testimonial footer {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1.15rem;
+}
+
+.testimonial-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--paper-deep);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.testimonial-name {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.testimonial-transition {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.faq-list {
+  max-width: 40rem;
+}
+
+.faq-item {
+  border-top: 1px solid var(--line);
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.1rem 1.75rem 1.1rem 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--ink);
+  position: relative;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.faq-item[open] summary::after {
+  content: "–";
+}
+
+.faq-item summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.faq-item p {
+  margin: 0 0 1.25rem;
+  color: var(--ink-soft);
+  max-width: 36rem;
+}
+
+.coaching-disclaimer {
+  margin-top: 1.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 36rem;
+}
+
+/* Payment / interest modal */
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(22, 24, 28, 0.45);
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal-panel {
+  position: relative;
+  width: min(100%, 28rem);
+  padding: 2rem 1.75rem 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  box-shadow: 0 1.25rem 2.5rem rgba(22, 24, 28, 0.12);
+}
+
+.modal-panel h2 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+.modal-panel > p {
+  color: var(--ink-soft);
+  margin: 0.65rem 0 0;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 0.3rem;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: var(--ink);
+  border-color: var(--ink-soft);
+}
+
 /* --- Footer --- */
 
 .site-footer {
@@ -836,6 +1190,16 @@ h3 {
   .portrait {
     justify-self: start;
     max-width: 16rem;
+  }
+
+  .method-list > li {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .fit-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
