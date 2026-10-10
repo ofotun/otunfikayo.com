@@ -972,6 +972,49 @@ h3 {
   max-width: 36rem;
 }
 
+.booking-terms {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 36rem;
+}
+
+/* --- Legal pages --- */
+
+.legal-section {
+  padding-top: 0;
+}
+
+.legal-content {
+  max-width: 42rem;
+}
+
+.legal-content h2,
+.legal-content h3 {
+  margin-top: 2rem;
+}
+
+.legal-content h2:first-child,
+.legal-content h3:first-child {
+  margin-top: 0;
+}
+
+.legal-content p,
+.legal-content li {
+  color: var(--ink-soft);
+}
+
+.legal-content ul {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.legal-updated {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
 /* Payment / interest modal */
 
 body.modal-open {
@@ -1010,6 +1053,27 @@ body.modal-open {
 .modal-panel > p {
   color: var(--ink-soft);
   margin: 0.65rem 0 0;
+}
+
+.payment-confirm {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  color: var(--ink-soft);
+}
+
+.payment-confirm input {
+  margin-top: 0.35rem;
+}
+
+.payment-confirm label {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.modal-note {
+  font-size: 0.92rem;
 }
 
 .modal-close {
@@ -1064,6 +1128,14 @@ body.modal-open {
   font-size: 0.85rem;
   color: var(--muted);
   margin: 0.4rem 0 0;
+}
+
+.footer-company {
+  max-width: 24rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0.55rem 0 0;
 }
 
 .footer-nav {
