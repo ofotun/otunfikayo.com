@@ -803,6 +803,62 @@ h3 {
   background: var(--accent);
 }
 
+.support-block {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  max-width: 52rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.support-block > p:not(.eyebrow) {
+  color: var(--ink-soft);
+  max-width: 38rem;
+  margin: 0.75rem 0 0;
+}
+
+.support-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.support-card {
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.support-step {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0.2rem;
+}
+
+.support-card h4 {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.support-card p:last-child {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
 .fit-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1277,6 +1333,10 @@ body.modal-open {
   .fit-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .support-timeline {
+    grid-template-columns: 1fr;
   }
 }
 
