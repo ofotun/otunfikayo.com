@@ -3,29 +3,25 @@
  *
  * Edit the constants below when ready:
  *   COACHING_PRICE  — display price (single fee)
- *   PAYMENT_URL     — Stripe Payment Link / Checkout URL (empty = placeholder)
+ *   PAYMENT_URL     — payment provider checkout URL (empty = placeholder)
  *   INTEREST_URL    — where "Register interest" goes while payments are closed
  *   SHOW_TESTIMONIALS — toggle visibility of the testimonials section
- *   SHOW_REFUND_FAQ   — set true when refund terms are confirmed for publication
+ *   SHOW_REFUND_FAQ   — toggle visibility of the refund FAQ
  */
 (function () {
   "use strict";
 
-  // TODO(Fikayo): Confirm this price before treating it as final.
-  // <!-- Proposed placeholder: £495 — change COACHING_PRICE below to update the page. -->
   var COACHING_PRICE = "£495";
 
-  // TODO(Fikayo): Drop your Stripe Payment Link / Checkout URL here when payments go live.
   // Leave empty to show the "Payments opening soon. Register interest" placeholder.
-  var PAYMENT_URL = "";
+  var PAYMENT_URL = "https://monzo.com/pay/r/bisonel-ltd_O6y4Yf0pHAddZX";
 
   var INTEREST_URL = "https://linktr.ee/ofotun";
 
-  // TODO: Client quote approvals confirmed by Fikayo on 2026-10-10. Set false to hide testimonials without removing markup.
+  // Client quote approvals confirmed by Fikayo on 2026-10-10. Set false to hide testimonials without removing markup.
   var SHOW_TESTIMONIALS = true;
 
-  // TODO(Fikayo): Replace placeholder refund policy with confirmed terms before setting true.
-  var SHOW_REFUND_FAQ = false;
+  var SHOW_REFUND_FAQ = true;
 
   document.querySelectorAll("[data-coaching-price]").forEach(function (el) {
     el.textContent = COACHING_PRICE;
@@ -44,15 +40,44 @@
   var modal = document.getElementById("payment-modal");
   var bookBtns = document.querySelectorAll("[data-book-pay]");
   var closeBtns = document.querySelectorAll("[data-modal-close]");
+  var modalTitle = modal ? modal.querySelector("[data-payment-title]") : null;
+  var livePaymentEls = modal ? modal.querySelectorAll("[data-payment-live]") : [];
+  var fallbackEls = modal ? modal.querySelectorAll("[data-payment-fallback]") : [];
+  var paymentConsent = modal ? modal.querySelector("[data-payment-consent]") : null;
+  var paymentContinue = modal ? modal.querySelector("[data-payment-continue]") : null;
   var lastFocus = null;
+
+  function setPaymentMode() {
+    if (!modal) return;
+    var hasPaymentUrl = Boolean(PAYMENT_URL);
+    if (modalTitle) {
+      modalTitle.textContent = hasPaymentUrl ? "Before you pay" : "Payments opening soon";
+    }
+    livePaymentEls.forEach(function (el) {
+      el.hidden = !hasPaymentUrl;
+    });
+    fallbackEls.forEach(function (el) {
+      el.hidden = hasPaymentUrl;
+    });
+    if (paymentConsent) {
+      paymentConsent.checked = false;
+      paymentConsent.disabled = !hasPaymentUrl;
+    }
+    if (paymentContinue) {
+      paymentContinue.hidden = !hasPaymentUrl;
+      paymentContinue.disabled = true;
+    }
+  }
 
   function openModal() {
     if (!modal) return;
     lastFocus = document.activeElement;
+    setPaymentMode();
     modal.hidden = false;
     document.body.classList.add("modal-open");
     var focusTarget =
-      modal.querySelector("[data-modal-primary]") ||
+      (PAYMENT_URL && paymentConsent) ||
+      modal.querySelector("[data-modal-primary]:not([hidden])") ||
       modal.querySelector("button, [href]");
     if (focusTarget) focusTarget.focus();
   }
@@ -68,11 +93,6 @@
 
   bookBtns.forEach(function (btn) {
     btn.addEventListener("click", function (event) {
-      if (PAYMENT_URL) {
-        // Live payment link — open Stripe (or other) checkout.
-        window.open(PAYMENT_URL, "_blank", "noopener,noreferrer");
-        return;
-      }
       event.preventDefault();
       openModal();
     });
@@ -83,6 +103,21 @@
   });
 
   if (modal) {
+    setPaymentMode();
+
+    if (paymentConsent && paymentContinue) {
+      paymentConsent.addEventListener("change", function () {
+        paymentContinue.disabled = !paymentConsent.checked;
+      });
+    }
+
+    if (paymentContinue) {
+      paymentContinue.addEventListener("click", function () {
+        if (!PAYMENT_URL || paymentContinue.disabled) return;
+        window.open(PAYMENT_URL, "_blank", "noopener,noreferrer");
+      });
+    }
+
     modal.addEventListener("click", function (event) {
       if (event.target === modal) closeModal();
     });
@@ -96,8 +131,13 @@
     // Trap focus inside the open modal for keyboard users.
     modal.addEventListener("keydown", function (event) {
       if (event.key !== "Tab" || modal.hidden) return;
-      var focusable = modal.querySelectorAll(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      var focusable = Array.prototype.filter.call(
+        modal.querySelectorAll(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        ),
+        function (el) {
+          return !el.hidden && el.offsetParent !== null;
+        }
       );
       if (!focusable.length) return;
       var first = focusable[0];

@@ -61,6 +61,9 @@
           <li><a href="/about/">About</a></li>
           <li><a href="/writing/">Writing</a></li>
           <li><a href="/contact/">Contact</a></li>
+          <li><a href="/terms/">Terms</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+          <li><a href="/cookies/">Cookies</a></li>
           <li>
             <a
               href="https://linkedin.com/in/ofotun"
@@ -100,6 +103,10 @@
           </button>
           <a class="btn btn-ghost" href="#package">See the programme</a>
         </div>
+        <p class="booking-terms">
+          By booking you agree to the <a href="/terms/">Terms</a>. Payment is
+          taken by Bisonel Ltd.
+        </p>
       </header>
 
       <section class="section" aria-labelledby="method-heading">
@@ -218,10 +225,6 @@
             </p>
           </div>
 
-          <!--
-            TODO(Fikayo): Confirm price. Displayed via COACHING_PRICE in js/coaching.js.
-            Proposed placeholder: £495
-          -->
           <article class="package-card reveal">
             <p class="package-label">Career Coaching Programme</p>
             <p class="package-price">
@@ -244,6 +247,10 @@
               <li>30-day check-in after you start the new role</li>
               <li>Templates: CV, outreach, and STAR story bank</li>
             </ul>
+            <p class="booking-terms">
+              By booking you agree to the <a href="/terms/">Terms</a>. Payment is
+              taken by Bisonel Ltd.
+            </p>
             <div class="cta-row">
               <button class="btn btn-primary" type="button" data-book-pay>
                 Book &amp; pay
@@ -479,20 +486,20 @@
             </details>
             <details class="faq-item reveal" id="coaching-refund-faq">
               <summary>What is the refund policy?</summary>
-              <!-- TODO(Fikayo): Replace this placeholder refund policy with your confirmed terms. -->
               <p>
-                <strong>DO NOT PUBLISH AS FINAL:</strong> Refund terms have not
-                yet been confirmed. Replace this text with the agreed policy
-                before accepting payment. Until then, direct visitors to register
-                interest and make the terms clear before they commit.
+                Consumers have 14 days from purchase to cancel. If you ask us to
+                start within that period, any refund may be reduced for work
+                already delivered. See the
+                <a href="/terms/#cancellation">cancellation and refunds terms</a>.
               </p>
             </details>
             <details class="faq-item reveal">
               <summary>How do I get started?</summary>
               <p>
-                Booking and payment are not live yet. Register your interest
-                through Linktree and tell me the role you’re aiming for and your
-                timeline. I’ll follow up when bookings open.
+                Use the Book &amp; pay button to pay for the programme. After
+                paying, email <a href="mailto:hello@bisonel.com">hello@bisonel.com</a>
+                with your name and target role. I’ll send a booking link within
+                2 working days.
               </p>
             </details>
           </div>
@@ -503,9 +510,9 @@
         <div class="wrap reveal">
           <h2 id="book-heading">Ready when you are</h2>
           <p class="lede" style="margin-top: 0.75rem">
-            If you’d like to work together, register your interest and tell me
-            what role you’re working towards. I’ll be in touch when a place is
-            available.
+            If you’d like to work together, use the button below to book and
+            pay. After paying, email your name and target role so I can send the
+            booking link.
           </p>
           <div class="cta-row">
             <button class="btn btn-primary" type="button" data-book-pay>
@@ -516,9 +523,13 @@
               href="https://linktr.ee/ofotun"
               target="_blank"
               rel="noopener noreferrer"
-              >Register interest on Linktree</a
+              >Ask a question on Linktree</a
             >
           </div>
+          <p class="booking-terms">
+            By booking you agree to the <a href="/terms/">Terms</a>. Payment is
+            taken by Bisonel Ltd.
+          </p>
           <p class="coaching-disclaimer">
             Career coaching only — not a recruitment service, and not a
             guarantee of employment or a specific offer.
@@ -532,6 +543,10 @@
         <div>
           <a class="footer-brand" href="/">Fikayo Otun</a>
           <p class="footer-meta">© <span data-year></span> Fikayo Otun</p>
+          <p class="footer-company">
+            Coaching services are provided by Bisonel Ltd, registered in England and
+            Wales (company no. 14557664).
+          </p>
         </div>
         <ul class="footer-nav">
           <li><a href="/offerings/">Offerings</a></li>
@@ -540,6 +555,9 @@
           <li><a href="/about/">About</a></li>
           <li><a href="/writing/">Writing</a></li>
           <li><a href="/contact/">Contact</a></li>
+          <li><a href="/terms/">Terms</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+          <li><a href="/cookies/">Cookies</a></li>
           <li>
             <a href="https://linkedin.com/in/ofotun" target="_blank" rel="noopener noreferrer"
               >LinkedIn</a
@@ -554,7 +572,7 @@
       </div>
     </footer>
 
-    <!-- Payment placeholder modal: shown when PAYMENT_URL is empty in js/coaching.js -->
+    <!-- Payment modal: falls back to register-interest content when PAYMENT_URL is empty in js/coaching.js -->
     <div
       id="payment-modal"
       class="modal"
@@ -573,20 +591,45 @@
           ×
         </button>
         <p class="eyebrow">Booking</p>
-        <h2 id="payment-modal-title">Payments opening soon</h2>
-        <p>
+        <h2 id="payment-modal-title" data-payment-title>Before you pay</h2>
+        <p data-payment-live>
+          Payment of <span data-coaching-price>£495</span> is taken by Bisonel
+          Ltd via Monzo.
+        </p>
+        <div class="payment-confirm" data-payment-live>
+          <input id="payment-consent" type="checkbox" data-payment-consent />
+          <label for="payment-consent">
+            I agree to the <a href="/terms/">Terms</a> and ask for the programme
+            to start within the
+            <a href="/terms/#cancellation">14-day cancellation period</a>. I
+            understand that if I cancel during this period I will pay for any
+            services already provided.
+          </label>
+        </div>
+        <p class="modal-note" data-payment-live>
+          After paying, email
+          <a href="mailto:hello@bisonel.com">hello@bisonel.com</a> with your name
+          and target role and I will send a booking link within 2 working days.
+        </p>
+        <p data-payment-fallback hidden>
           Online booking isn’t available yet. Register your interest and I’ll
-          contact you when bookings open.
+          contact you when bookings open. By booking you agree to the
+          <a href="/terms/">Terms</a>.
         </p>
         <div class="cta-row">
           <a
             class="btn btn-primary"
             data-modal-primary
+            data-payment-fallback
             href="https://linktr.ee/ofotun"
             target="_blank"
             rel="noopener noreferrer"
+            hidden
             >Register interest</a
           >
+          <button class="btn btn-primary" type="button" data-payment-continue disabled>
+            Continue to payment
+          </button>
           <button class="btn btn-ghost" type="button" data-modal-close>
             Close
           </button>
