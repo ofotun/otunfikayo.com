@@ -14,7 +14,7 @@ EXPORT = Path(
 if not EXPORT.is_file():
     EXPORT = ROOT / "uploads" / "2026-10-10-otunfikayo-copy-edited_a9da.md"
 
-HTML_GLOB = ["*.html"]
+PAGE_FILES = [ROOT / "index.html", *sorted(ROOT.glob("*/index.html"))]
 JS_FILES = [ROOT / "js" / "coaching.js"]
 
 SKIP_IDS = {
@@ -69,9 +69,9 @@ def strip_html_tags(html: str) -> str:
 
 def load_corpus() -> str:
     parts: list[str] = []
-    for path in ROOT.glob("*.html"):
+    for path in PAGE_FILES:
         raw = path.read_text(encoding="utf-8")
-        if path.name == "coaching.html":
+        if path.parent.name == "coaching":
             raw = re.sub(
                 r'<details[^>]*id="coaching-refund-faq"[^>]*>.*?</details>',
                 "",

@@ -27,12 +27,15 @@ Then visit `http://localhost:8080`.
 
 | Path | Purpose |
 |------|---------|
-| `index.html` | Home |
-| `offerings.html` | Architecture / AI / Advisory |
-| `author.html` | MbDD book presence |
-| `about.html` | About |
-| `writing.html` | Writing stub |
-| `contact.html` | Contact (Linktree + LinkedIn) |
+| `index.html` | Home (`/`) |
+| `offerings/index.html` | Architecture / AI / Advisory (`/offerings/`) |
+| `coaching/index.html` | Career coaching (`/coaching/`) |
+| `author/index.html` | MbDD book presence (`/author/`) |
+| `about/index.html` | About (`/about/`) |
+| `writing/index.html` | Writing stub (`/writing/`) |
+| `contact/index.html` | Contact (`/contact/`, Linktree + LinkedIn) |
+| `*.html` (root, old names) | Redirect stubs to the clean URLs (`noindex`) |
+| `sitemap.xml` / `robots.txt` | Sitemap of clean URLs and crawler rules |
 | `css/styles.css` | Site styles |
 | `js/main.js` | Nav + reveal motion |
 | `favicon.ico` / `favicon-*.png` / `apple-touch-icon.png` | Brand mark favicons |
