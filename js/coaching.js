@@ -5,6 +5,8 @@
  *   COACHING_PRICE  — display price (single fee)
  *   PAYMENT_URL     — Stripe Payment Link / Checkout URL (empty = placeholder)
  *   INTEREST_URL    — where "Register interest" goes while payments are closed
+ *   SHOW_TESTIMONIALS — toggle visibility of the testimonials section
+ *   SHOW_REFUND_FAQ   — set true when refund terms are confirmed for publication
  */
 (function () {
   "use strict";
@@ -19,9 +21,25 @@
 
   var INTEREST_URL = "https://linktr.ee/ofotun";
 
+  // TODO: Client quote approvals confirmed by Fikayo on 2026-10-10. Set false to hide testimonials without removing markup.
+  var SHOW_TESTIMONIALS = true;
+
+  // TODO(Fikayo): Replace placeholder refund policy with confirmed terms before setting true.
+  var SHOW_REFUND_FAQ = false;
+
   document.querySelectorAll("[data-coaching-price]").forEach(function (el) {
     el.textContent = COACHING_PRICE;
   });
+
+  var testimonialsSection = document.getElementById("coaching-testimonials");
+  if (testimonialsSection && !SHOW_TESTIMONIALS) {
+    testimonialsSection.remove();
+  }
+
+  var refundFaq = document.getElementById("coaching-refund-faq");
+  if (refundFaq && !SHOW_REFUND_FAQ) {
+    refundFaq.remove();
+  }
 
   var modal = document.getElementById("payment-modal");
   var bookBtns = document.querySelectorAll("[data-book-pay]");
@@ -99,5 +117,7 @@
     price: COACHING_PRICE,
     paymentUrl: PAYMENT_URL,
     interestUrl: INTEREST_URL,
+    showTestimonials: SHOW_TESTIMONIALS,
+    showRefundFaq: SHOW_REFUND_FAQ,
   };
 })();
